@@ -81,8 +81,8 @@ shinyServer(function(input, output) {
         plot_title <- paste(inst, inst2, sep=" / ")
         plot_title <- paste(plot_title,collaboration_count, sep="\n(")
         
-        artcl_link1 <- paste("<a href=\"http://www.pubmed.org/?term=", search_term, "\">", inst, "</a>",sep="" )
-        artcl_link2 <- paste("<a href=\"http://www.pubmed.org/?term=", search_term2, "\">", inst2, "</a>",sep="" )
+        artcl_link1 <- paste("<a href=\"http://www.ncbi.nlm.nih.gov/pubmed/?term=", search_term, "\">", inst, "</a>",sep="" )
+        artcl_link2 <- paste("<a href=\"http://www.ncbi.nlm.nih.gov/pubmed/?term=", search_term2, "\">", inst2, "</a>",sep="" )
         
         library(ggplot2)
 
@@ -140,8 +140,8 @@ output$links <- renderText ({
 }
                 inst2 <- input$institution2
                 
-                artcl_link1 <- paste("<a href=\"http://www.pubmed.org/?term=", search_term, "\" target='_blank'\">", inst, "</a>",sep="" )
-                artcl_link2 <- paste("<a href=\"http://www.pubmed.org/?term=", search_term2, "\" target='_blank'\">", inst2, "</a>",sep="" )
+                artcl_link1 <- paste("<a href=\"http://www.ncbi.nlm.nih.gov/pubmed/?term=", search_term, "\" target='_blank'\">", inst, "</a>",sep="" )
+                artcl_link2 <- paste("<a href=\"http://www.ncbi.nlm.nih.gov/pubmed/?term=", search_term2, "\" target='_blank'\">", inst2, "</a>",sep="" )
         artcl_links <- paste("View Pubmed Results:",artcl_link1, "/", artcl_link2, sep=" ")
         artcl_links
         
@@ -199,14 +199,15 @@ output$links <- renderText ({
         
         search_term3 <- paste(search_term, "AND", search_term2, sep=" ")
 
-        collaboration_link <- paste("View Pubmed Results:","<a href=\"http://www.pubmed.org/?term=", search_term3,  "\" target='_blank'\">", "Collaborations Between These Institutions", "</a>*",sep=" " )
+        collaboration_link <- paste("View Pubmed Results:","<a href=\"http://www.ncbi.nlm.nih.gov/pubmed/?term=", search_term3,  "\" target='_blank'\">", "Collaborations Between These Institutions", "</a>*",sep=" " )
+        collaboration_link <- paste(collaboration_link, "</br>*<sub>Collabarations are identified as publications that share authorship between institutions. According to the <a href='http://www.nlm.nih.gov/bsd/mms/medlineelements.html#ad'>NLM documentation for field descriptions</a>, institutional affiliation for all authors was not officially added until 2014.</sub></br>" ,sep='')
+
         collaboration_link
-        
 })
 
         output$summary <- renderText({
         
-        txt <- "<p>GRUPO (Gauging Research University Publication Output) is a dashboard for comparing publication activity between institutions over a specified timespan. The interface searches <a href='http://www.ncbi.nlm.nih.gov/pubmed'> Pubmed </a> based on a the date, first institution and second institution inputs.</p><p>More information is available at: <a href='http://github.com/vpnagraj/grupo'>http://github.com/vpnagraj/grupo</a></p>"
+        txt <- "<p>GRUPO (Gauging Research University Publication Output) is a dashboard for comparing publication activity between institutions over a specified period of time. The application builds a <a href='http://www.ncbi.nlm.nih.gov/pubmed'> Pubmed</a> search based on the date, first institution and second institution inputs.</p><p>Below is a list of all institutions that are searchable:</p>"
         txt
 })
 })

@@ -1,19 +1,16 @@
 library(shiny)
 
 instnames <- read.csv("institutions.csv", stringsAsFactors=FALSE)
-# instnames$City <- paste(instnames$Institution, instnames$City, sep=" ")
-# 
-# instnames <- as.matrix(instnames)
 
-shinyUI(navbarPage("GRUPO",
+shinyUI(navbarPage("GRUPO", header=(tags$h1("GRUPO", align='center', tags$h2("Gauging Research University Publication Output", align='center'))), footer=tags$div(style='margin:20px;',tags$a(href = "https://www.gnu.org/licenses/gpl.txt", "AVAILABLE UNDER GNU GPL 3.0 LICENSE")),
         tabPanel("Home",
-        tags$h1("GRUPO"),
-        tags$h2("Gauging Research University Publication Output"),
         sidebarPanel(
                 dateRangeInput(inputId = "dates", label="Enter A Date Range To Search", min="2000-01-01", max=Sys.time()),
         selectInput(inputId = "institution1", label = "First Institution", choices = instnames),
         selectInput(inputId = "institution2", label= "Second Institution", choices=instnames)
+
 ),
+
         mainPanel(
                 htmlOutput("help"),
                 plotOutput("barplot"),
@@ -22,8 +19,8 @@ shinyUI(navbarPage("GRUPO",
         )
 ),
         tabPanel("About",
-                 tags$h1("GRUPO"),
-                 tags$h2("Gauging Research University Publication Output"),
-                 htmlOutput("summary"))
+                 htmlOutput("summary"),
+                 tags$p(instnames$Institution[-1])
+        )
 )
 )
