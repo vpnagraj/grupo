@@ -87,7 +87,7 @@ shinyServer(function(input, output) {
         library(ggplot2)
         library(ggthemes)
 
-g <- ggplot(df, aes(Institution,Total.Articles, fill=Institution)) + geom_bar(stat = "identity") + ggtitle(plot_title) + ylab("Total Articles Indexed In Pubmed") + theme_economist()
+g <- ggplot(df, aes(Institution,Total.Articles, fill=Institution)) + geom_bar(stat = "identity") + ggtitle(plot_title) + ylab("Total Articles Indexed In Pubmed") + theme_few()
         g
 
 
