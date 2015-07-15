@@ -85,8 +85,9 @@ shinyServer(function(input, output) {
         artcl_link2 <- paste("<a href=\"http://www.ncbi.nlm.nih.gov/pubmed/?term=", search_term2, "\">", inst2, "</a>",sep="" )
         
         library(ggplot2)
+        library(ggthemes)
 
-g <- ggplot(df, aes(Institution,Total.Articles, fill=Institution)) + geom_bar(stat = "identity") + ggtitle(plot_title) + ylab("Total Articles Indexed In Pubmed")
+g <- ggplot(df, aes(Institution,Total.Articles, fill=Institution)) + geom_bar(stat = "identity") + ggtitle(plot_title) + ylab("Total Articles Indexed In Pubmed") + theme_economist()
         g
 
 
