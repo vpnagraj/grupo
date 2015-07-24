@@ -208,7 +208,13 @@ output$links <- renderText ({
 
         output$summary <- renderText({
         
-        txt <- "<p>GRUPO (Gauging Research University Publication Output) is a dashboard for comparing publication activity between institutions over a specified period of time. The application builds a <a href='http://www.ncbi.nlm.nih.gov/pubmed'> Pubmed</a> search based on the date, first institution and second institution inputs.</p><p>Below is a list of all institutions that are searchable:</p>"
+        txt <- "<p>GRUPO (Gauging Research University Publication Output) is a dashboard for comparing publication activity between institutions over a specified period of time. The application builds a <a href='http://www.ncbi.nlm.nih.gov/pubmed'> Pubmed</a> search based on the date, first institution and second institution inputs.</p><p>Below is a list of all the institutions that GRUPO searches:</p>"
         txt
 })
+        output$institutions <- renderDataTable({
+                
+                institutions <- as.data.frame(instnames$Institution[-1])
+                names(institutions) <- c("Institutions")
+                institutions
+        }, options = list(paging = FALSE))
 })

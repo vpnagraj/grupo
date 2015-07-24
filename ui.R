@@ -2,7 +2,7 @@ library(shiny)
 
 instnames <- read.csv("institutions.csv", stringsAsFactors=FALSE)
 
-shinyUI(navbarPage("GRUPO", header=(tags$h1("GRUPO", align='center', tags$em(tags$h2("Gauging Research University Publication Output", align='center', style="margin-top:10px")))), footer=tags$div(style='margin:20px;',tags$a(href = "https://www.gnu.org/licenses/gpl.txt", "AVAILABLE UNDER GNU GPL 3.0 LICENSE"), tags$p(icon("copyright"), "2015 VP Nagraj")),
+shinyUI(navbarPage("GRUPO", header=(tags$h1("GRUPO", align='center', tags$u(tags$h2("Gauging Research University Publication Output", align='center', style="margin-top:10px")))), footer=tags$div(style='margin:20px;',tags$a(href = "https://www.gnu.org/licenses/gpl.txt", "AVAILABLE UNDER GNU GPL 3.0 LICENSE"), tags$p(icon("copyright"), "2015 VP Nagraj")),
         tabPanel("Home",
         sidebarPanel(
                 dateRangeInput(inputId = "dates", label="Enter A Date Range To Search", min="2000-01-01", max=Sys.time()),
@@ -19,7 +19,8 @@ shinyUI(navbarPage("GRUPO", header=(tags$h1("GRUPO", align='center', tags$em(tag
 ),
         tabPanel("About",
                  htmlOutput("summary"),
-                 tags$p(instnames$Institution[-1])
+                  dataTableOutput("institutions")
+                
         )
 )
 )
