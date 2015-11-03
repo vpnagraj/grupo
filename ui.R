@@ -7,20 +7,25 @@ shinyUI(navbarPage("GRUPO", header=(tags$h1("GRUPO", align='center', tags$u(tags
         sidebarPanel(
                 dateRangeInput(inputId = "dates", label="Enter A Date Range To Search", min="2000-01-01", max=Sys.time()),
         selectInput(inputId = "institution1", label = "First Institution", choices = instnames),
-        selectInput(inputId = "institution2", label= "Second Institution", choices=instnames)
+        selectInput(inputId = "institution2", label= "Second Institution", choices=instnames),
+        actionButton("go", label="Go!")
 ),
-
         mainPanel(
                 htmlOutput("help"),
                 plotOutput("barplot"),
                 htmlOutput("links"),
                 htmlOutput("collaborations")
-        )
+        ),
+# add call to singleton so the message box js is only loaded once
+singleton(
+    tags$head(tags$script(src = "message-handler.js"))
+)
 ),
         tabPanel("About",
                  htmlOutput("summary"),
-                  dataTableOutput("institutions")
-                
+                 dataTableOutput("institutions")
         )
+
+
 )
 )
