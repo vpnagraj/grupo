@@ -107,7 +107,7 @@ output$links <- renderText ({
 })
         output$institutions <- renderDataTable({
             
-                institutions <- as.data.frame(instnames$Institution[-1])
+                institutions <- as.data.frame(instnames$Institution)
                 names(institutions) <- c("Institutions")
                 institutions
         }, options = list(paging = FALSE))
