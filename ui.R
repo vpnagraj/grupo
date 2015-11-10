@@ -6,8 +6,8 @@ shinyUI(navbarPage("GRUPO", header=(tags$h1("GRUPO", align='center', tags$u(tags
         tabPanel("Home",
         sidebarPanel(
                 dateRangeInput(inputId = "dates", label="Enter A Date Range To Search", min="2000-01-01", max=Sys.time()),
-        selectInput(inputId = "institution1", label = "First Institution", choices = instnames),
-        selectInput(inputId = "institution2", label= "Second Institution", choices=instnames),
+        selectInput(inputId = "institution1", label = "First Institution", choices=instnames$Institution, selected = "Harvard"),
+        selectInput(inputId = "institution2", label= "Second Institution", choices=instnames$Institution, selected = "Johns Hopkins"),
         actionButton("go", label="Go!")
 ),
         mainPanel(
