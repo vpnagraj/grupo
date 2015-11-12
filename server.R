@@ -1,7 +1,21 @@
 library(shiny)
 library(rentrez)
-instnames <- read.csv("institutions.csv", stringsAsFactors=FALSE)
+library(ggmap)
+library(ggplot2)
+
+# source script to load helper functions
 source('helpers.R')
+
+# read in geocoded institution data
+instnames <- read.csv("institutions.csv", stringsAsFactors=FALSE)
+
+# create map of all institutions to be rendedered on about page
+usa_map <- get_map(location = "United States", zoom=3, maptype = "watercolor")
+
+q <-
+    ggmap(usa_map) +
+    geom_point(aes(x=Longitude, y=Latitude), data=instnames, col="red") +
+    theme_nothing()
 
 shinyServer(function(input, output, session) {
         
@@ -57,15 +71,7 @@ shinyServer(function(input, output, session) {
             listdat
             
         })
-#         output$help <-  observeEvent(input$go, {
-#             
-# #             renderText({
-#         
-#         txt <- "<h3>GET STARTED</h3><ol><li>Select a range of publication dates</li><li>Select the first institution</li><li>Select the second institution for comparison</li></ol>"
-#         
-#         txt
-#             
-#         })
+
         output$barplot <- renderPlot({ 
                 
             library(ggplot2)
@@ -111,6 +117,12 @@ output$links <- renderText ({
                 names(institutions) <- c("Institutions")
                 institutions
         }, options = list(paging = FALSE))
+        
+        output$map <- renderPlot({
+            
+            q
+            
+        })
         
         
 })
