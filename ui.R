@@ -25,19 +25,19 @@ shinyUI(navbarPage("GRUPO",
             actionButton("go", label="Go!")
 ),
         mainPanel(
-            htmlOutput("help"),
+            conditionalPanel(condition = "input.go == 0",
+                htmlOutput("help")),
             plotOutput("barplot"),
             htmlOutput("links"),
             htmlOutput("collaborations")
-        ),
-# add call to singleton so the message box js is only loaded once
-singleton(
-    tags$head(tags$script(src = "message-handler.js"))
-)
+        )
+# # add call to singleton so the message box js is only loaded once
+# singleton(
+#     tags$head(tags$script(src = "message-handler.js"))
+# )
 ),
         tabPanel("About",
             htmlOutput("summary"),
-            
             splitLayout(
             dataTableOutput("institutions"),
             plotOutput("map")

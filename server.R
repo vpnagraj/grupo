@@ -19,10 +19,10 @@ q <-
 
 shinyServer(function(input, output, session) {
         
-    observe({
-        session$sendCustomMessage(type = 'testmessage',
-                                  message = "Welcome to GRUPO!\nTo get started:\n1. Select the range of publication dates\n2. Select the first institution\n3. Select the second institution\n4. Press Go!")
-    })
+#     observe({
+#         session$sendCustomMessage(type = 'testmessage',
+#                                   message = "Welcome to GRUPO!\nTo get started:\n1. Select the range of publication dates\n2. Select the first institution\n3. Select the second institution\n4. Press Go!")
+#     })
     
         dat <- eventReactive(input$go,{
             
@@ -70,6 +70,18 @@ shinyServer(function(input, output, session) {
                             collaboration_link)
             listdat
             
+        })
+        
+        output$help <- renderText({
+            
+            "<h3>To Get Started:</h3>
+            <ol>
+            <li>Select the range of publication dates</li>
+            <li>Select the first institution</li>
+            <li>Select the second institution</li>
+            <li>Press Go!</li>
+            </ol>"
+
         })
 
         output$barplot <- renderPlot({ 
