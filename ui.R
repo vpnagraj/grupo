@@ -31,10 +31,6 @@ shinyUI(navbarPage("GRUPO",
             htmlOutput("links"),
             htmlOutput("collaborations")
         )
-# # add call to singleton so the message box js is only loaded once
-# singleton(
-#     tags$head(tags$script(src = "message-handler.js"))
-# )
 ),
         tabPanel("About",
             htmlOutput("summary"),

@@ -17,12 +17,7 @@ q <-
     geom_point(aes(x=Longitude, y=Latitude), data=instnames, col="red") +
     theme_nothing()
 
-shinyServer(function(input, output, session) {
-        
-#     observe({
-#         session$sendCustomMessage(type = 'testmessage',
-#                                   message = "Welcome to GRUPO!\nTo get started:\n1. Select the range of publication dates\n2. Select the first institution\n3. Select the second institution\n4. Press Go!")
-#     })
+shinyServer(function(input, output) {
     
         dat <- eventReactive(input$go,{
             
