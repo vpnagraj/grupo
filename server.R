@@ -10,12 +10,12 @@ source('helpers.R')
 instnames <- read.csv("institutions.csv", stringsAsFactors=FALSE)
 
 # create map of all institutions to be rendedered on about page
-usa_map <- get_map(location = "United States", zoom=3, maptype = "watercolor")
+# usa_map <- get_map(location = "United States", zoom=3, maptype = "watercolor")
 
-q <-
-    ggmap(usa_map) +
-    geom_point(aes(x=Longitude, y=Latitude), data=instnames, col="red") +
-    theme_nothing()
+# q <-
+#     ggmap(usa_map) +
+#     geom_point(aes(x=Longitude, y=Latitude), data=instnames, col="red") +
+#     theme_nothing()
 
 shinyServer(function(input, output) {
     
@@ -125,11 +125,11 @@ output$links <- renderText ({
                 institutions
         }, options = list(paging = FALSE))
         
-        output$map <- renderPlot({
-            
-            q
-            
-        })
+#         output$map <- renderPlot({
+#             
+#             q
+#             
+#         })
         
         
 })

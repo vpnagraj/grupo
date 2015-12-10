@@ -35,8 +35,8 @@ shinyUI(navbarPage("GRUPO",
         tabPanel("About",
             htmlOutput("summary"),
             splitLayout(
-            dataTableOutput("institutions"),
-            plotOutput("map")
+            dataTableOutput("institutions")
+#             plotOutput("map")
             )
         )
 
