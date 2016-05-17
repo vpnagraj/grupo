@@ -13,6 +13,7 @@ GRUPO is also available to use (locally) via the following R code:
 install.packages("shiny")
 install.packages("ggplot2")
 install.packages("ggthemes")
+install.packages("rentrez")
 
 shiny::runGitHub('grupo', 'vpnagraj')
 ``` 
