@@ -1,0 +1,17 @@
+{
+  "@context": "https://raw.githubusercontent.com/mbjones/codemeta/master/codemeta.jsonld",
+  "@type": "Code",
+  "author": [
+
+  ],
+  "identifier": "https://dx.doi.org/10.6084/m9.figshare.3383653.v1",
+  "codeRepository": "https://github.com/vpnagraj/grupo",
+  "datePublished": "2016-05-17",
+  "dateModified": "2016-05-17",
+  "dateCreated": "2016-05-17",
+  "description": "GRUPO (Gauging Research University Publication Output) is a web application built with the R programming language and Shiny framework. The purpose of this tool is to compare the total number of biomedical publications and co-authorships between institutions over a specific range of dates.",
+  "keywords": "",
+  "license": "GPL v3.0",
+  "title": "GRUPO: Gauging Research University Publication Output",
+  "version": "v1.0.0"
+}
