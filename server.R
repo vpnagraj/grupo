@@ -1,6 +1,6 @@
 library(shiny)
 library(rentrez)
-library(ggmap)
+# library(ggmap)
 library(ggplot2)
 
 # source script to load helper functions
